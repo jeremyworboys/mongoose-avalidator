@@ -88,3 +88,41 @@ function (done) {
   });
 }
 ```
+
+### Property dependency example
+The following example validates 'emailprovider' after 'email' been sanitized. 
+By using **parallel: false** validations run in series.
+```javascript
+var schema = mongoose.Schema({
+    email: String,
+    emailprovider: String
+}).
+    plugin(avalidator, {
+      parallel: false,
+      validate: {
+        email: function (done) {
+            var self = this;
+            setTimeout(function () {
+                self.str = self.sanitize.chain().
+                    ltrim('a').rtrim('z').str;
+
+                self.check({
+                    notNull: 'email is null',
+                    isEmail: 'email is invalid'
+                }).
+                    notNull().
+                    isEmail();
+                done(null);
+            }, 10);
+        },
+        emailprovider: function () {
+            var matches = this.model.email.match(/^[^@]+@([^\.]+)\.([^\.]{3}$)/),
+                provider = Array.isArray(matches) ? matches[1] : '';
+            this.check({
+                equals: 'provider not match: %1'
+            }).
+                equals(provider);
+        }
+      }
+    });
+```
