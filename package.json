@@ -1,0 +1,26 @@
+{
+  "name": "mongoose-asyncvalidator",
+  "version": "0.0.1",
+  "description": "mongoose-asyncvalidator\r ==================",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fluxxu/mongoose-asyncvalidator.git"
+  },
+  "author": "Flux Xu (fluxxu@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fluxxu/mongoose-asyncvalidator/issues"
+  },
+  "keywords": [
+    "mongoose",
+    "node-validator",
+    "validation"
+  ],
+  "dependencies": {
+    "mongoose": "= 3.x"
+  }
+}
