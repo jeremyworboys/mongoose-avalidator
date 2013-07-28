@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 before(function (done) {
-    mongoose.connect('mongodb://localhost/mongoose-validator', done);
+    mongoose.connect('mongodb://localhost/mongoose-avalidator', done);
 });
 
 after(function (done) {
